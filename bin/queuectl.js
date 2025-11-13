@@ -20,7 +20,7 @@ program
   .action((command, opts) => {
     const priority = parseInt(opts.priority);
     const id = addJob(command, 3, priority);
-    console.log(`✅ Job enqueued with ID: ${id} and priority: ${priority}`);
+    console.log(` Job enqueued with ID: ${id} and priority: ${priority}`);
   });
 
 
@@ -55,7 +55,7 @@ program
     const { getDLQJobs } = require('../src/jobStore');
     const jobs = getDLQJobs();
     if (jobs.length === 0) {
-      console.log('✅ DLQ is empty');
+      console.log(' DLQ is empty');
     } else {
       console.table(jobs);
     }
@@ -78,7 +78,7 @@ program
   .description('Reset all jobs (for testing)')
   .action(() => {
     db.prepare('DELETE FROM jobs').run();
-    console.log('🗑️  All jobs cleared.');
+    console.log('  All jobs cleared.');
   });
 
 // Config commands
@@ -91,7 +91,7 @@ config
   .description('Set a configuration key-value pair')
   .action((key, value) => {
     setConfig(key, value);
-    console.log(`⚙️  Config updated: ${key} = ${value}`);
+    console.log(` Config updated: ${key} = ${value}`);
   });
 
 config
